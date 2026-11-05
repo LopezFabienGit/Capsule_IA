@@ -21,3 +21,7 @@ Dans `sources_video_IA-3/`, le projet `chevre_ia.ini` a donc besoin de `dialogue
 cd sources_video_IA-3
 python3 -m unittest discover tests
 ```
+
+## Licence
+
+Code distribué sous licence [Apache-2.0](LICENSE). Copyright 2026 Fabien Lopez.
