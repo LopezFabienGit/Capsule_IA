@@ -1,6 +1,6 @@
 # Tests de modèles text-to-speech
 
-Première étape de la pipeline texte → capsule vidéo : comparer des modèles TTS sur un même script, avec le même découpage et les mêmes mesures.
+Première étape de la pipeline capsule vidéo : produire l'audio à partir du texte. Plusieurs TTS peuvent être comparé sur un même texte avec une même voix.
 
 ```
 prepare_text.py     découpe le script en morceaux -> data/segments.json
@@ -8,16 +8,16 @@ common.py           reprise, assemblage et rapport, communs à tous les moteurs
 engines/voxcpm/     VoxCPM2, avec son propre environnement Python
 engines/template/   moteur factice à copier pour ajouter un modèle
 exemples/script.txt exemple de script au format attendu
-voices/             audios de référence pour le clonage (non versionnés)
-data/               découpages générés (non versionnés)
-runs/<moteur>/<essai>/   résultats (non versionnés)
+voices/             audios de référence pour le clonage
+data/               découpages générés
+runs/<moteur>/<essai>/   résultats
     capsule.wav     narration complète
     chunks/         un fichier WAV par morceau
     config.json     réglages de l'essai
     report.json     durées par section, temps de calcul, mémoire
 ```
 
-Chaque moteur a son propre environnement, car les modèles TTS ont souvent des dépendances incompatibles. Les voix, les scripts de narration et les audios générés ne sont pas versionnés.
+Chaque moteur a son propre environnement, car les modèles TTS ont souvent des dépendances incompatibles.
 
 ## Prérequis
 
