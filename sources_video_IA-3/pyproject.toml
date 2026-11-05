@@ -1,0 +1,17 @@
+[project]
+name = "capsule"
+version = "1.0"
+description = "Capsules vidéo animées : présentateur, panneau illustré et voix enregistrée"
+requires-python = ">=3.10"
+dependencies = ["pycairo", "numpy"]
+
+[tool.black]
+line-length = 110
+
+[tool.ruff]
+line-length = 110
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "N", "B", "UP", "SIM", "I"]
+# drawing code: short coordinate names (x, y, r) and dense numeric literals are intended
+ignore = ["E741"]

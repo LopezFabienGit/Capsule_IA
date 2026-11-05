@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+/engines/template/uv.lock
+
+# Résultats et découpages générés
+/runs/
+/data/
+
+# Voix de référence et transcriptions : données personnelles à ne pas publier
+/voices/*
+!/voices/.gitkeep

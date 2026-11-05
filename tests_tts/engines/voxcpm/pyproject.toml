@@ -1,0 +1,26 @@
+[project]
+name = "tts-engine-voxcpm"
+version = "0.1.0"
+description = "Moteur TTS VoxCPM2"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "numpy",
+    "soundfile",
+    "voxcpm",
+    # PyTorch pour CUDA 11.8 : le pilote de la machine de calcul s'arrête à CUDA 12.1.
+    "torch==2.7.1",
+    "torchaudio==2.7.1",
+    "torchcodec==0.4.*",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu118" }
+torchaudio = { index = "pytorch-cu118" }
+
+[[tool.uv.index]]
+name = "pytorch-cu118"
+url = "https://download.pytorch.org/whl/cu118"
+explicit = true

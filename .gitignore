@@ -1,0 +1,26 @@
+# Environnements et caches
+.venv/
+__pycache__/
+.ruff_cache/
+
+# Voix : données personnelles à ne pas publier
+/Voix/
+
+# Audios et vidéos (générés ou enregistrés)
+*.wav
+*.mp3
+*.ogg
+*.opus
+*.flac
+*.m4a
+*.mp4
+
+# Textes de narration
+/text.txt
+/Droit_Capsule1.txt
+/sources_video_IA-3/dialogue.txt
+
+# Rendus, médias et ancienne version du code vidéo
+/sources_video_IA-3/output/
+/sources_video_IA-3/medias/
+/sources_video_IA-3/ancienne_version/

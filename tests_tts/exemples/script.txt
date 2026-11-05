@@ -1,0 +1,7 @@
+# Script d'exemple
+
+### 1. Introduction — 0:00
+Bienvenue dans cette capsule. Écrivez les nombres en toutes lettres, comme deux mille vingt-six.
+
+### 2. Conclusion — 0:10
+Chaque section commence par un titre suivi de son minutage. Ce titre n'est pas prononcé.

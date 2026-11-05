@@ -1,0 +1,51 @@
+Capsules vidéo animées — sources de rendu
+
+Principe
+  Une vidéo = un fichier de projet .ini (voir chevre_ia.ini, entièrement commenté, à copier comme modèle).
+  Il indique le texte, l'enregistrement de la voix, le présentateur, les options et les images / vidéos
+  à insérer dans le panneau blanc.
+
+  python3 creer_video.py chevre_ia.ini                    -> output/chevre_ia.mp4
+  python3 creer_video.py chevre_ia.ini --apercu 10,60,120 -> images fixes dans output/apercus/
+  python3 creer_video.py chevre_ia.ini --de 60 --a 90     -> extrait output/chevre_ia_60-90.mp4
+  python3 creer_video.py chevre_ia.ini --realigner        -> force le recalcul de l'alignement
+
+  L'alignement texte / voix (output/alignement/) est recalculé automatiquement quand l'audio,
+  le texte ou le fichier de projet ont changé.
+
+Installation
+  Linux : sudo apt install ffmpeg python3-cairo python3-numpy
+  Mac   : brew install ffmpeg cairo pkg-config && pip3 install pycairo numpy
+  Police Poppins (Google Fonts) : Regular, Medium, SemiBold, Bold, ExtraBold.
+
+Texte (dialogue.txt ou autre fichier indiqué par « dialogue = »)
+  Un paragraphe par ligne ; les lignes vides sont ignorées.
+  Mode duo : chaque ligne commence par « Person_1 : » ou « Person_2 : », en alternance.
+  Mode solo : étiquettes facultatives.
+
+Illustrations animées (« illustrations = » dans le projet)
+  donnees_ia : capsule/scenes/donnees_ia.py, écrites pour le texte actuel de dialogue.txt (mots-clés et
+               numéros de paragraphes). Si le texte change, elles ne correspondent plus : le script le signale.
+  aucune     : panneau vide (avec « titre = » au début et à la fin) ; y placer ses propres images / vidéos.
+  Pour un nouveau texte illustré : copier donnees_ia.py dans capsule/scenes/ sous un autre nom et l'adapter.
+
+Images et vidéos dans le panneau blanc
+  Une section [media ...] par fichier dans le projet : à quel paragraphe (et à partir de quel mot) elle
+  apparaît, combien de temps, dans quelle zone (panneau, haut, bas, gauche, droite), avec une légende.
+  Le son des vidéos insérées est ignoré. Ranger ces fichiers dans medias/ par exemple.
+
+Organisation du code (paquet capsule/)
+  creer_video.py        commande à lancer (lecture des options, alignement si besoin, rendu)
+  capsule/config.py     lecture et vérification du fichier de projet
+  capsule/timeline.py   texte et minutage des paragraphes
+  capsule/alignment.py  alignement texte / voix sur l'enregistrement
+  capsule/renderer.py   dessin de chaque image et encodage ffmpeg
+  capsule/characters.py personnages (styles, animation, chèvre)
+  capsule/subtitles.py  sous-titres et fichier .srt
+  capsule/media.py      images / vidéos insérées
+  capsule/drawing.py    outils de dessin (couleurs, formes, texte, animations)
+  capsule/icons.py      petites icônes
+  capsule/scenes/       illustrations animées, un module par texte
+  tests/                tests automatiques : python3 -m unittest discover tests
+  ancienne_version/     première vidéo (IA prédictive / générative) et code d'avant la refonte,
+                        conservés pour mémoire ; ils ne fonctionnent plus avec le code actuel.

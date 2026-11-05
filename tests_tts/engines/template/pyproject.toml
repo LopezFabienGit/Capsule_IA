@@ -1,0 +1,9 @@
+[project]
+name = "tts-engine-template"
+version = "0.1.0"
+description = "Modèle d'environnement pour un nouveau moteur TTS"
+requires-python = ">=3.10"
+dependencies = ["soundfile", "numpy"]
+
+[tool.uv]
+package = false
